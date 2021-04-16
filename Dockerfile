@@ -5,8 +5,8 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 # Set work directory
 WORKDIR /code
-# Install dependencies
-COPY Pipfile Pipfile.lock /code/
-RUN pip install pipenv && pipenv install --system
-# Copy project
 COPY . /code/
+# Install dependencies
+RUN pip3 install --upgrade pip -i https://pypi.tuna.tsinghua.edu.cn/simple/
+RUN pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple/ -r ./requirements.txt
+
